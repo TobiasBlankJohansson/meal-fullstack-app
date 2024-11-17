@@ -1,3 +1,4 @@
+import { MealRecipe } from "./MealRecipe";
 import { WeekFormItem } from "./WeekFormItem";
 
 const week: string[] = [
@@ -25,6 +26,7 @@ export function MealWeek() {
           Save
         </button>
       </form>
+      <MealRecipe></MealRecipe>
     </section>
   );
 }

@@ -11,7 +11,12 @@ export function WeekFormItem({ day }: weekFormItemProp) {
         placeholder="Count"
         className="input w-full max-w-xs border-neutral focus:ring-primary focus:border-primary"
       />
-      <button className="btn btn-primary hover:bg-secondary">Select</button>
+      <button
+        className="btn btn-primary hover:bg-secondary"
+        onClick={() => document.getElementById("my_modal_3").showModal()}
+      >
+        Select
+      </button>
     </section>
   );
 }
