@@ -1,3 +1,15 @@
+import { WeekFormItem } from "./WeekFormItem";
+
+const week: string[] = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday",
+];
+
 export function MealWeek() {
   return (
     <section>
@@ -6,17 +18,9 @@ export function MealWeek() {
         <hr className="w-2/4"></hr>
       </header>
       <form>
-        <section>
-          <label>
-            Monday
-            <input
-              type="text"
-              placeholder="Count"
-              className="input input-bordered w-full max-w-xs"
-            />
-            <button className="btn">Select</button>
-          </label>
-        </section>
+        {week.map((day) => {
+          return <WeekFormItem day={day}></WeekFormItem>;
+        })}
       </form>
     </section>
   );
