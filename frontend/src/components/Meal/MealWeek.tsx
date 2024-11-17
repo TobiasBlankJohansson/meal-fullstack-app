@@ -22,6 +22,7 @@ export function MealWeek() {
           return <WeekFormItem day={day}></WeekFormItem>;
         })}
       </form>
+      <button className="btn">Button</button>
     </section>
   );
 }
