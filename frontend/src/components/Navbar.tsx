@@ -1,17 +1,23 @@
 export function Navbar() {
   return (
     <>
-      <nav className="navbar bg-primary text-primary-content px-20">
+      <nav className="navbar bg-primary text-primary-content px-20 border-b-2 border-gray-500">
         <header className="flex-1">
-          <a className="btn btn-ghost text-xl">myMeal</a>
+          <a className="btn btn-ghost hover:bg-secondary text-base-100 text-3xl">
+            myMeal
+          </a>
         </header>
         <section className="flex-none">
-          <ul className="menu menu-horizontal px-1">
-            <li>
-              <a>Meal</a>
+          <ul className="menu menu-horizontal px-5">
+            <li className="px-5">
+              <a className="btn btn-ghost hover:bg-secondary text-lg text-base-100 font-bold">
+                Meal
+              </a>
             </li>
-            <li>
-              <a>List</a>
+            <li className="px-5">
+              <a className="btn btn-ghost hover:bg-secondary text-lg text-base-100 font-bold">
+                List
+              </a>
             </li>
           </ul>
           <figure
