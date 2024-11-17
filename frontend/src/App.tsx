@@ -1,5 +1,7 @@
+import { MealApp } from "./components/MealApp";
+
 function App() {
-  return <></>;
+  return <MealApp></MealApp>;
 }
 
 export default App;
