@@ -1,7 +1,7 @@
 export function Navbar() {
   return (
     <>
-      <nav className="navbar bg-primary text-primary-content">
+      <nav className="navbar bg-primary text-primary-content px-20">
         <header className="flex-1">
           <a className="btn btn-ghost text-xl">myMeal</a>
         </header>

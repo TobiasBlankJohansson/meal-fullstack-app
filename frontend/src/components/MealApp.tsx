@@ -1,5 +1,9 @@
-import { Navbar } from "./Navbar";
+import { Meal } from "./Meal/meal";
 
 export function MealApp() {
-  return <Navbar></Navbar>;
+  return (
+    <>
+      <Meal></Meal>
+    </>
+  );
 }
