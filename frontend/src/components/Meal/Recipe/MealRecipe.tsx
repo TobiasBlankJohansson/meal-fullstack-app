@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { mealItem } from "../../../types/meal";
 import { MealDetails } from "./MealDetails";
-import { MealRecipeItem } from "./MealRecipeItem";
 import { RenderRecipeList } from "./RenderRecipeList";
 
 const mealMock: mealItem[] = [
