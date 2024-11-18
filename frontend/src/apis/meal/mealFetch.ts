@@ -24,7 +24,8 @@ export const getMeals = async (): Promise<mealFetch[]> => {
       servings: 6,
       meal: {
         title: "banan",
-        ingredients: "",
+        ingredients:
+          "3 1/2 c Chicken broth; homemade|1 lb Fresh spinach; wash/trim/chop|1 Egg|1 c Grated parmesan cheese; --or--|1 c Romano cheese; freshly grated|Salt and pepper; to taste",
         instructions: "",
         servings: "2",
       },
