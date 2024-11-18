@@ -2,6 +2,7 @@ import { useState } from "react";
 import { mealItem } from "../../../types/meal";
 import { MealDetails } from "./MealDetails";
 import { MealRecipeItem } from "./MealRecipeItem";
+import { RenderRecipeList } from "./RenderRecipeList";
 
 const mealMock: mealItem[] = [
   {
@@ -104,26 +105,6 @@ type mealRecipeProp = {
 export function MealRecipe({ setMeal, mealSelect }: mealRecipeProp) {
   const [recipeCount, SetRecipeCount] = useState<number>(0);
 
-  const renderList = () => {
-    const arrLength = mealMock.length - recipeCount;
-    let count = 10;
-    if (arrLength < 9) {
-      count = arrLength;
-    }
-    const meals: JSX.Element[] = [];
-    for (let i = 0; i < count; i++) {
-      console.log(mealMock[i]);
-      meals.push(
-        <MealRecipeItem
-          meal={mealMock[i]}
-          mealSelect={mealSelect}
-          setMeal={setMeal}
-        ></MealRecipeItem>
-      );
-    }
-    return meals;
-  };
-
   return (
     <>
       <dialog id="my_modal_3" className="modal">
@@ -138,7 +119,14 @@ export function MealRecipe({ setMeal, mealSelect }: mealRecipeProp) {
           </header>
           <hr></hr>
           <main>
-            <ol>{renderList()}</ol>
+            <ol>
+              {RenderRecipeList({
+                mealSelect: mealSelect,
+                meals: mealMock,
+                recipeCount: recipeCount,
+                setMeal: setMeal,
+              })}
+            </ol>
           </main>
         </div>
       </dialog>
