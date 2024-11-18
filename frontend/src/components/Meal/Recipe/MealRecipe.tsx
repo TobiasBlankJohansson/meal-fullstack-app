@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { mealItem } from "../../../types/meal";
 import { MealDetails } from "./MealDetails";
 
@@ -40,6 +41,8 @@ type mealRecipeProp = {
 };
 
 export function MealRecipe({ setMeal, mealSelect }: mealRecipeProp) {
+  const [recipeCount, SetRecipeCount] = useState<number>(0);
+
   return (
     <>
       <dialog id="my_modal_3" className="modal">
