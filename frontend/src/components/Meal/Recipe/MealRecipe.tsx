@@ -47,8 +47,8 @@ export function MealRecipe() {
               ✕
             </button>
           </form>
-          <header>
-            <h3 className="text-lg font-bold">Select food</h3>
+          <header className="flex justify-center">
+            <h3 className="text-2xl font-bold">Select food</h3>
           </header>
           <hr></hr>
           <main>
