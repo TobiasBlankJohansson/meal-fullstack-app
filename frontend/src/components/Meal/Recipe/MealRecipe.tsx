@@ -130,6 +130,11 @@ export function MealRecipe({ setMeal, mealSelect }: mealRecipeProp) {
               })}
             </ol>
           </main>
+          <footer>
+            <button className="btn btn-ghost">{"<"}</button>
+            <p>{recipeCount}</p>
+            <button className="btn btn-ghost">{">"}</button>
+          </footer>
         </div>
       </dialog>
       <MealDetails meal={mealMock[selectedMeal]}></MealDetails>
