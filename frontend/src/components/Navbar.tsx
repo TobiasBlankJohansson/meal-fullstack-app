@@ -5,7 +5,7 @@ export function Navbar() {
     <>
       <nav className="navbar bg-primary text-primary-content px-20 border-b-2 border-gray-500">
         <header className="flex-1">
-          <Link to="/" className="text-base-100 text-3xl">
+          <Link to="/" className="text-base-100 text-3xl font-bold">
             myMeal
           </Link>
         </header>
