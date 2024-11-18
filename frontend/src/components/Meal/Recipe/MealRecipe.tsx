@@ -1,10 +1,6 @@
 import { mealItem } from "../../../types/meal";
 import { MealDetails } from "./MealDetails";
 
-type mealRecipeProp = {
-  meal: mealItem;
-};
-
 const mealMock: mealItem[] = [
   {
     title: "Stracciatella (Italian Wedding Soup)",
@@ -38,7 +34,12 @@ const mealMock: mealItem[] = [
   },
 ];
 
-export function MealRecipe() {
+type mealRecipeProp = {
+  setMeal: React.Dispatch<React.SetStateAction<mealItem[]>>;
+  mealSelect: number;
+};
+
+export function MealRecipe({ setMeal, mealSelect }: mealRecipeProp) {
   return (
     <>
       <dialog id="my_modal_3" className="modal">
@@ -63,9 +64,19 @@ export function MealRecipe() {
                 >
                   {mealMock[0].title}
                 </button>
-                <button className="btn btn-md">
-                  Pick food
-                </button>
+                <form method="dialog">
+                  <button
+                    className="btn btn-md"
+                    onClick={() => {
+                      setMeal((prev) => {
+                        prev[mealSelect] = mealMock[0];
+                        return prev;
+                      });
+                    }}
+                  >
+                    Pick food
+                  </button>
+                </form>
               </li>
               <hr />
             </ol>
