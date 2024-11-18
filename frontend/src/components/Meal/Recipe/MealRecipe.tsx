@@ -104,6 +104,7 @@ type mealRecipeProp = {
 
 export function MealRecipe({ setMeal, mealSelect }: mealRecipeProp) {
   const [recipeCount, SetRecipeCount] = useState<number>(0);
+  const [selectedMeal, setSelectedMeal] = useState<number>(0);
 
   return (
     <>
@@ -125,12 +126,13 @@ export function MealRecipe({ setMeal, mealSelect }: mealRecipeProp) {
                 meals: mealMock,
                 recipeCount: recipeCount,
                 setMeal: setMeal,
+                selectedMeal: selectedMeal,
               })}
             </ol>
           </main>
         </div>
       </dialog>
-      <MealDetails meal={mealMock[0]}></MealDetails>
+      <MealDetails meal={mealMock[selectedMeal]}></MealDetails>
     </>
   );
 }
