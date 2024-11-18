@@ -1,6 +1,7 @@
-import { MealDetails } from "./Recipe/MealDetails";
+import { useState } from "react";
 import { MealRecipe } from "./Recipe/MealRecipe";
 import { WeekFormItem } from "./WeekFormItem";
+import { mealItem } from "../../types/meal";
 
 const week: string[] = [
   "Monday",
@@ -12,7 +13,24 @@ const week: string[] = [
   "Sunday",
 ];
 
+const emptyMeal: mealItem = {
+  title: "select",
+  ingredients: "",
+  instructions: "",
+  servings: "0",
+};
+
 export function MealWeek() {
+  const [meal, setMeal] = useState<mealItem[]>([
+    emptyMeal,
+    emptyMeal,
+    emptyMeal,
+    emptyMeal,
+    emptyMeal,
+    emptyMeal,
+    emptyMeal,
+  ]);
+  
   return (
     <section>
       <header className="flex flex-col items-center">
