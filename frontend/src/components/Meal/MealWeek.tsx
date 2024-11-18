@@ -34,7 +34,7 @@ export function MealWeek() {
   ]);
   const [mealSelect, setMealSelect] = useState<number>(0);
   const [servings, setServings] = useState<number[]>([0, 0, 0, 0, 0, 0, 0]);
-  console.log(servings);
+
   return (
     <section>
       <header className="flex flex-col items-center">
