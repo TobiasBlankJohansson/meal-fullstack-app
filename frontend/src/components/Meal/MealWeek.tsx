@@ -30,6 +30,7 @@ export function MealWeek() {
     emptyMeal,
     emptyMeal,
   ]);
+  const [servings, setServings] = useState<number[]>([0, 0, 0, 0, 0, 0, 0]);
   return (
     <section>
       <header className="flex flex-col items-center">
@@ -37,9 +38,7 @@ export function MealWeek() {
         <hr className="w-2/4"></hr>
       </header>
       <form className="flex flex-col items-center">
-        {
-          
-        }
+        {}
         <button className="btn btn-secondary hover:btn-primary hover:text-base-100 mt-5 w-1/2 h-16 text-2xl text-base-100 mb-10">
           Save
         </button>
