@@ -49,8 +49,7 @@ export function MealWeek() {
       setServings(() => servingArr);
     };
     getMeal();
-  }),
-    [];
+  }, []);
 
   return (
     <section>
