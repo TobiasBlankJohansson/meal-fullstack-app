@@ -53,7 +53,10 @@ export function MealWeek() {
             key={"WeekFormItem:" + count}
           ></WeekFormItem>
         ))}
-        <button className="btn btn-secondary hover:btn-primary hover:text-base-100 mt-5 w-1/2 h-16 text-2xl text-base-100 mb-10">
+        <button
+          className="btn btn-secondary hover:btn-primary hover:text-base-100 mt-5 w-1/2 h-16 text-2xl text-base-100 mb-10"
+          onClick={()=>{}}
+        >
           Save
         </button>
       </form>
