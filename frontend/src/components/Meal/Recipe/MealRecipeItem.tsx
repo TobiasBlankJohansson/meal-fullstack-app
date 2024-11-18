@@ -1,4 +1,16 @@
-export function MealRecipeItem() {
+import { mealItem } from "../../../types/meal";
+
+type mealRecipeItemProp = {
+  meal: mealItem;
+  setMeal: React.Dispatch<React.SetStateAction<mealItem[]>>;
+  mealSelect: number;
+};
+
+export function MealRecipeItem({
+  meal,
+  setMeal,
+  mealSelect,
+}: mealRecipeItemProp) {
   return (
     <>
       <li className="flex justify-between items-center my-1">
@@ -6,14 +18,14 @@ export function MealRecipeItem() {
           className="btn btn-ghost"
           onClick={() => document.getElementById("meal-details").showModal()}
         >
-          {mealMock[0].title}
+          {meal.title}
         </button>
         <form method="dialog">
           <button
             className="btn btn-md"
             onClick={() => {
               setMeal((prev) => {
-                prev[mealSelect] = mealMock[0];
+                prev[mealSelect] = meal;
                 return [...prev];
               });
             }}
