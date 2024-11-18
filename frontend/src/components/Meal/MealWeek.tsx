@@ -22,7 +22,7 @@ export function MealWeek() {
         {week.map((day) => {
           return <WeekFormItem day={day}></WeekFormItem>;
         })}
-        <button className="btn btn-secondary hover:btn-primary hover:text-base-100 mt-5 w-1/2 h-16 text-2xl text-base-100">
+        <button className="btn btn-secondary hover:btn-primary hover:text-base-100 mt-5 w-1/2 h-16 text-2xl text-base-100 mb-10">
           Save
         </button>
       </form>
