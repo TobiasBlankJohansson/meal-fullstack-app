@@ -13,6 +13,7 @@ export function MealRecipe({ setMeal, mealSelect }: mealRecipeProp) {
   const [recipeCount, SetRecipeCount] = useState<number>(0);
   const [selectedMeal, setSelectedMeal] = useState<number>(0);
   const [recipes, setRecipes] = useState<mealItem[]>([]);
+
   useEffect(() => {
     const getRecipes = async () => {
       const fetchRecipes = await getRecipe();
@@ -21,7 +22,7 @@ export function MealRecipe({ setMeal, mealSelect }: mealRecipeProp) {
     console.log("help");
     getRecipes();
   }, []);
-  
+
   return (
     <>
       <dialog id="meal-recipe" className="modal">

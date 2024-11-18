@@ -31,3 +31,15 @@ export const getMeals = async (): Promise<mealFetch[]> => {
     },
   ];
 };
+
+type postMealsProp = {
+  servings: number[];
+  meal: mealItem[];
+};
+
+export const postMeals = async ({
+  servings,
+  meal,
+}: postMealsProp): Promise<boolean> => {
+  return true;
+};
