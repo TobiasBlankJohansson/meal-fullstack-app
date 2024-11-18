@@ -33,11 +33,11 @@ export function WeekFormItem({
         }
       />
       <button
-        className="btn btn-primary hover:bg-secondary"
+        className={`btn ${meal.title == "select" ? "btn-primary" :"btn-accent"} btn-primary hover:bg-secondary text-md`}
         onClick={(e) => {
           e.preventDefault();
           setMealSelect(() => count);
-          document.getElementById("my_modal_3").showModal();
+          document.getElementById("meal-recipe").showModal();
         }}
       >
         {meal.title}
