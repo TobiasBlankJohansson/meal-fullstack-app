@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MealRecipe } from "./Recipe/MealRecipe";
 import { WeekFormItem } from "./WeekFormItem";
 import { mealItem } from "../../types/meal";
+import { getMeals, mealFetch } from "../../apis/meal/mealFetch";
 
 const week: string[] = [
   "Monday",
@@ -35,6 +36,22 @@ export function MealWeek() {
   const [mealSelect, setMealSelect] = useState<number>(0);
   const [servings, setServings] = useState<number[]>([0, 0, 0, 0, 0, 0, 0]);
 
+  useEffect(() => {
+    const getMeal = async () => {
+      const meals: mealFetch[] = await getMeals();
+      const mealArr: mealItem[] = [];
+      const servingArr: number[] = [];
+      count.forEach((i) => {
+        mealArr.push(meals[i].meal);
+        servingArr.push(meals[i].servings);
+      });
+      setMeal(() => mealArr);
+      setServings(() => servingArr);
+    };
+    getMeal();
+  }),
+    [];
+
   return (
     <section>
       <header className="flex flex-col items-center">
@@ -55,7 +72,7 @@ export function MealWeek() {
         ))}
         <button
           className="btn btn-secondary hover:btn-primary hover:text-base-100 mt-5 w-1/2 h-16 text-2xl text-base-100 mb-10"
-          onClick={()=>{}}
+          onClick={() => {}}
         >
           Save
         </button>

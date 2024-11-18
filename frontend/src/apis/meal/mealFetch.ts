@@ -1,6 +1,6 @@
 import { mealItem } from "../../types/meal";
 
-type meal = {
+export type mealFetch = {
   servings: number;
   meal: mealItem;
 };
@@ -12,7 +12,7 @@ const emptyMeal: mealItem = {
   servings: "0",
 };
 
-export const getMeals = async (): Promise<meal[]> => {
+export const getMeals = async (): Promise<mealFetch[]> => {
   return [
     { servings: 0, meal: emptyMeal },
     { servings: 1, meal: emptyMeal },
