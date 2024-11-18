@@ -1,4 +1,5 @@
 import { mealItem } from "../../../types/meal";
+import { MealDetails } from "./MealDetails";
 
 type mealRecipeProp = {
   meal: mealItem;
@@ -54,14 +55,24 @@ export function MealRecipe() {
           <main>
             <ol>
               <li className="flex justify-between items-center my-1">
-                <p>{mealMock[0].title}</p>
-                <button className="btn btn-md">Pick food</button>
+                <button
+                  className="btn btn-ghost"
+                  onClick={() =>
+                    document.getElementById("meal-details").showModal()
+                  }
+                >
+                  {mealMock[0].title}
+                </button>
+                <button className="btn btn-md">
+                  Pick food
+                </button>
               </li>
               <hr />
             </ol>
           </main>
         </div>
       </dialog>
+      <MealDetails meal={mealMock[0]}></MealDetails>
     </>
   );
 }

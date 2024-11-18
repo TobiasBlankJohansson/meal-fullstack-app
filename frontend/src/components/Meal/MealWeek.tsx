@@ -1,3 +1,4 @@
+import { MealDetails } from "./Recipe/MealDetails";
 import { MealRecipe } from "./Recipe/MealRecipe";
 import { WeekFormItem } from "./WeekFormItem";
 

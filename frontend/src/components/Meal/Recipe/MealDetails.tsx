@@ -4,12 +4,7 @@ type mealDetailsProp = {
   meal: mealItem;
 };
 
-export function MealDetails({
-  title,
-  ingredients,
-  instructions,
-  servings,
-}: mealItem) {
+export function MealDetails({ meal }: mealDetailsProp) {
   return (
     <>
       <dialog id="meal-details" className="modal">
@@ -20,19 +15,19 @@ export function MealDetails({
             </button>
           </form>
           <header>
-            <h2 className="font-bold text-lg">{title}</h2>
+            <h2 className="font-bold text-lg">{meal.title}</h2>
           </header>
           <hr></hr>
-          <h3 className="py-4">Servings</h3>
-          <p>{servings}</p>
-          <h3 className="py-4">Ingredients</h3>
+          <h3 className="pt-4 font-bold">Servings</h3>
+          <p>{meal.servings}</p>
+          <h3 className="pt-4 font-bold">Ingredients</h3>
           <ol>
-            {ingredients.split("|").map((ingr) => (
+            {meal.ingredients.split("|").map((ingr) => (
               <li>{ingr}</li>
             ))}
           </ol>
-          <h3 className="py-4">Instructions</h3>
-          <p>{instructions}</p>
+          <h3 className="pt-4 font-bold">Instructions</h3>
+          <p>{meal.instructions}</p>
         </div>
       </dialog>
     </>
