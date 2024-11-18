@@ -30,7 +30,6 @@ export function MealWeek() {
     emptyMeal,
     emptyMeal,
   ]);
-  
   return (
     <section>
       <header className="flex flex-col items-center">
@@ -38,9 +37,9 @@ export function MealWeek() {
         <hr className="w-2/4"></hr>
       </header>
       <form className="flex flex-col items-center">
-        {week.map((day) => {
-          return <WeekFormItem day={day}></WeekFormItem>;
-        })}
+        {
+          
+        }
         <button className="btn btn-secondary hover:btn-primary hover:text-base-100 mt-5 w-1/2 h-16 text-2xl text-base-100 mb-10">
           Save
         </button>

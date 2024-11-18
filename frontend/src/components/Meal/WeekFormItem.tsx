@@ -1,8 +1,13 @@
+import { mealItem } from "../../types/meal";
+
 type weekFormItemProp = {
   day: string;
+  count: number;
+  meal: mealItem;
+  setCount:
 };
 
-export function WeekFormItem({ day }: weekFormItemProp) {
+export function WeekFormItem({ day, count, meal,setCount }: weekFormItemProp) {
   return (
     <section className="mt-5 w-1/2 grid grid-cols-3 gap-10">
       <label className="text-neutral text-2xl">{day}</label>
