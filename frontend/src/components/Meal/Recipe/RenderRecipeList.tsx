@@ -16,21 +16,21 @@ export function RenderRecipeList({
   setMeal,
   setSelectedMeal,
 }: renderRecipeListProp) {
-  const arrLength = meals.length - recipeCount;
+  const recipe = recipeCount * 10;
+  const arrLength = meals.length - recipe;
   let count = 10;
   if (arrLength < 9) {
     count = arrLength;
   }
   const returnMeals: JSX.Element[] = [];
   for (let i = 0; i < count; i++) {
-    console.log(meals[i]);
     returnMeals.push(
       <MealRecipeItem
-        meal={meals[i]}
+        meal={meals[recipe + i]}
         mealSelect={mealSelect}
         setMeal={setMeal}
         setSelectedMeal={setSelectedMeal}
-        arrayCount={recipeCount + i}
+        arrayCount={recipe + i}
       ></MealRecipeItem>
     );
   }
