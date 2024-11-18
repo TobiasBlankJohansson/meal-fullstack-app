@@ -1,4 +1,4 @@
-import { MealRecipe } from "./MealRecipe";
+import { MealRecipe } from "./Recipe/MealRecipe";
 import { WeekFormItem } from "./WeekFormItem";
 
 const week: string[] = [
