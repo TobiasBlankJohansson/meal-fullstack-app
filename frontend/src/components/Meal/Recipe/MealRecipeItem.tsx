@@ -34,6 +34,7 @@ export function MealRecipeItem({
           </button>
         </form>
       </li>
+      <hr />
     </>
   );
 }
