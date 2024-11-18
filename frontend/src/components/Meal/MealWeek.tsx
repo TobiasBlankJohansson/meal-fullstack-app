@@ -57,7 +57,7 @@ export function MealWeek() {
           Save
         </button>
       </form>
-      <MealRecipe></MealRecipe>
+      <MealRecipe mealSelect={mealSelect} setMeal={setMeal}></MealRecipe>
     </section>
   );
 }

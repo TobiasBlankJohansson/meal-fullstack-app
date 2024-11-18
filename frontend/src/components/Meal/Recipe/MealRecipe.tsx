@@ -70,7 +70,7 @@ export function MealRecipe({ setMeal, mealSelect }: mealRecipeProp) {
                     onClick={() => {
                       setMeal((prev) => {
                         prev[mealSelect] = mealMock[0];
-                        return prev;
+                        return [...prev];
                       });
                     }}
                   >
