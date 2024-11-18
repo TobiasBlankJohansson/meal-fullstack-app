@@ -6,6 +6,7 @@ type renderRecipeListProp = {
   recipeCount: number;
   setMeal: React.Dispatch<React.SetStateAction<mealItem[]>>;
   mealSelect: number;
+  setSelectedMeal: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export function RenderRecipeList({
@@ -27,6 +28,7 @@ export function RenderRecipeList({
         meal={meals[i]}
         mealSelect={mealSelect}
         setMeal={setMeal}
+        setSelectedMeal={setSelectedMeal}
       ></MealRecipeItem>
     );
   }

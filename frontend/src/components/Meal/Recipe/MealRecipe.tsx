@@ -126,7 +126,7 @@ export function MealRecipe({ setMeal, mealSelect }: mealRecipeProp) {
                 meals: mealMock,
                 recipeCount: recipeCount,
                 setMeal: setMeal,
-                selectedMeal: selectedMeal,
+                setSelectedMeal: setSelectedMeal,
               })}
             </ol>
           </main>

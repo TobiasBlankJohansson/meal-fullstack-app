@@ -4,12 +4,14 @@ type mealRecipeItemProp = {
   meal: mealItem;
   setMeal: React.Dispatch<React.SetStateAction<mealItem[]>>;
   mealSelect: number;
+  setSelectedMeal: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export function MealRecipeItem({
   meal,
   setMeal,
   mealSelect,
+  setSelectedMeal,
 }: mealRecipeItemProp) {
   return (
     <>
