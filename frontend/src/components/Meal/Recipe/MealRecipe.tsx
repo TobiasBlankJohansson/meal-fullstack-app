@@ -130,10 +130,20 @@ export function MealRecipe({ setMeal, mealSelect }: mealRecipeProp) {
               })}
             </ol>
           </main>
-          <footer>
-            <button className="btn btn-ghost">{"<"}</button>
-            <p>{recipeCount}</p>
-            <button className="btn btn-ghost">{">"}</button>
+          <footer className="flex justify-center items-center">
+            <button
+              className="btn btn-ghost text-2xl font-bold"
+              onClick={() => SetRecipeCount((prev) => prev - 1)}
+            >
+              {"<"}
+            </button>
+            <p className="m-5 text-2xl font-bold">{recipeCount + 1}</p>
+            <button
+              className="btn btn-ghost text-2xl font-bold"
+              onClick={() => SetRecipeCount((prev) => prev + 1)}
+            >
+              {">"}
+            </button>
           </footer>
         </div>
       </dialog>
