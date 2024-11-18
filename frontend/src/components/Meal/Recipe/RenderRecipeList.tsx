@@ -14,6 +14,7 @@ export function RenderRecipeList({
   meals,
   recipeCount,
   setMeal,
+  setSelectedMeal,
 }: renderRecipeListProp) {
   const arrLength = meals.length - recipeCount;
   let count = 10;
@@ -29,6 +30,7 @@ export function RenderRecipeList({
         mealSelect={mealSelect}
         setMeal={setMeal}
         setSelectedMeal={setSelectedMeal}
+        arrayCount={recipeCount + i}
       ></MealRecipeItem>
     );
   }

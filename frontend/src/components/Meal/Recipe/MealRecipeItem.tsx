@@ -2,6 +2,7 @@ import { mealItem } from "../../../types/meal";
 
 type mealRecipeItemProp = {
   meal: mealItem;
+  arrayCount: number;
   setMeal: React.Dispatch<React.SetStateAction<mealItem[]>>;
   mealSelect: number;
   setSelectedMeal: React.Dispatch<React.SetStateAction<number>>;
@@ -9,6 +10,7 @@ type mealRecipeItemProp = {
 
 export function MealRecipeItem({
   meal,
+  arrayCount,
   setMeal,
   mealSelect,
   setSelectedMeal,
@@ -18,7 +20,10 @@ export function MealRecipeItem({
       <li className="flex justify-between items-center my-1">
         <button
           className="btn btn-ghost"
-          onClick={() => document.getElementById("meal-details").showModal()}
+          onClick={() => {
+            setSelectedMeal(() => arrayCount);
+            document.getElementById("meal-details").showModal();
+          }}
         >
           {meal.title}
         </button>
