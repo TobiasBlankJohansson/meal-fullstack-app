@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { MealRecipe } from "./Recipe/MealRecipe";
 import { WeekFormItem } from "./WeekFormItem";
 import { mealItem } from "../../types/meal";
-import { getMeals, mealFetch } from "../../apis/meal/mealFetch";
+import { getMeals, mealFetch, postMeals } from "../../apis/meal/mealFetch";
 
 const week: string[] = [
   "Monday",
@@ -71,7 +71,13 @@ export function MealWeek() {
         ))}
         <button
           className="btn btn-secondary hover:btn-primary hover:text-base-100 mt-5 w-1/2 h-16 text-2xl text-base-100 mb-10"
-          onClick={() => {}}
+          onClick={(e) => {
+            e.preventDefault();
+            const save = async () => {
+              const postFetch = await postMeals({ servings, meal });
+            };
+            save();
+          }}
         >
           Save
         </button>
