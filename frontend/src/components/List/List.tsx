@@ -1,3 +1,9 @@
+import { GroceryList } from "./GroceryList";
+
 export function List() {
-    return <></>
+  return (
+    <main>
+      <GroceryList></GroceryList>
+    </main>
+  );
 }
