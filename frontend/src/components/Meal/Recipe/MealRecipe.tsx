@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { mealItem } from "../../../types/meal";
 import { MealDetails } from "./MealDetails";
 import { RenderRecipeList } from "./RenderRecipeList";
+import { getRecipe } from "../../../apis/recipe/recipeFetch";
 
 type mealRecipeProp = {
   setMeal: React.Dispatch<React.SetStateAction<mealItem[]>>;
@@ -11,6 +12,15 @@ type mealRecipeProp = {
 export function MealRecipe({ setMeal, mealSelect }: mealRecipeProp) {
   const [recipeCount, SetRecipeCount] = useState<number>(0);
   const [selectedMeal, setSelectedMeal] = useState<number>(0);
+  const [recipes, setRecipes] = useState<mealItem[]>([]);
+
+  useEffect(() => {
+    const getRecipes = async () => {
+      const fetchRecipes = await getRecipe();
+      setRecipes(() => fetchRecipes);
+    };
+    getRecipes();
+  }, []);
 
   return (
     <>
@@ -29,7 +39,7 @@ export function MealRecipe({ setMeal, mealSelect }: mealRecipeProp) {
             <ol>
               {RenderRecipeList({
                 mealSelect: mealSelect,
-                meals: mealMock,
+                meals: recipes,
                 recipeCount: recipeCount,
                 setMeal: setMeal,
                 setSelectedMeal: setSelectedMeal,
@@ -48,7 +58,7 @@ export function MealRecipe({ setMeal, mealSelect }: mealRecipeProp) {
             <p className="m-5 text-2xl font-bold flex justify-center col-start-2">
               {recipeCount + 1}
             </p>
-            {recipeCount * 10 < mealMock.length - 10 && (
+            {recipeCount * 10 < recipes.length - 10 && (
               <button
                 className="btn btn-ghost text-2xl font-bold"
                 onClick={() => SetRecipeCount((prev) => prev + 1)}
@@ -59,7 +69,9 @@ export function MealRecipe({ setMeal, mealSelect }: mealRecipeProp) {
           </footer>
         </div>
       </dialog>
-      <MealDetails meal={mealMock[selectedMeal]}></MealDetails>
+      {recipes.length != 0 && (
+        <MealDetails meal={recipes[selectedMeal]}></MealDetails>
+      )}
     </>
   );
 }
