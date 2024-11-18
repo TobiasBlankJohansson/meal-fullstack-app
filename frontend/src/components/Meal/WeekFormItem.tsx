@@ -28,7 +28,7 @@ export function WeekFormItem({
         onChange={(input) =>
           setServings((prev) => {
             prev[count] = Number(input.target.value);
-            return prev;
+            return [...prev];
           })
         }
       />
