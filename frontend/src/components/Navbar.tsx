@@ -1,11 +1,14 @@
+import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 
 export function Navbar() {
+  const [selected, setSelected] = useState<number>(0);
+
   return (
     <>
       <nav className="navbar bg-primary text-primary-content px-20 border-b-2 border-gray-500">
         <header className="flex-1">
-          <Link to="/" className="text-base-100 text-3xl font-bold">
+          <Link to="/" onClick={()=>setSelected(()=>0)} className="text-base-100 text-3xl font-bold">
             myMeal
           </Link>
         </header>
@@ -14,7 +17,8 @@ export function Navbar() {
             <li className="px-5">
               <Link
                 to="/"
-                className="btn btn-ghost hover:bg-secondary text-lg text-base-100 font-bold"
+                onClick={()=>setSelected(()=>0)}
+                className={`btn btn-ghost hover:bg-secondary text-lg text-base-100 font-bold ${selected == 0 && "bg-secondary"}`}
               >
                 Meal
               </Link>
@@ -22,7 +26,8 @@ export function Navbar() {
             <li className="px-5">
               <Link
                 to="/list"
-                className="btn btn-ghost hover:bg-secondary text-lg text-base-100 font-bold"
+                onClick={()=>setSelected(()=>1)}
+                className={`btn btn-ghost hover:bg-secondary text-lg text-base-100 font-bold ${selected == 1 && "bg-secondary"}`}
               >
                 List
               </Link>

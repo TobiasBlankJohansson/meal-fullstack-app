@@ -20,7 +20,7 @@ export const getMeals = async (): Promise<mealFetch[]> => {
     { servings: 0, meal: emptyMeal },
     { servings: 0, meal: emptyMeal },
     {
-      servings: 0,
+      servings: 2,
       meal: {
         title: "Moosewood Eggplant and Randomness",
         ingredients:
@@ -31,7 +31,7 @@ export const getMeals = async (): Promise<mealFetch[]> => {
       },
     },
     {
-      servings: 0,
+      servings: 2,
       meal: {
         title: "banan",
         ingredients:
