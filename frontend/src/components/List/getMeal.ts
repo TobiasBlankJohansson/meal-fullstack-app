@@ -66,7 +66,7 @@ export async function getMeal() {
     const { servings, ingredients } = meal.meal;
     const count = meal.servings;
 
-    if (!ingredients) return;
+    if (!ingredients || count == 0) return;
 
     ingredients
       .split("|")
