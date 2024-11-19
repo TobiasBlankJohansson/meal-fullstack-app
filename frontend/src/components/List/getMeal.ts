@@ -4,28 +4,56 @@ export async function getMeal() {
   const meals: mealFetch[] = await getMeals();
   const buyList: string[] = [];
 
+  function scaleFraction(
+    numerator: number,
+    denominator: number,
+    servings: number,
+    count: number
+  ): number {
+    return (
+      Math.round((numerator / denominator / count) * Number(servings) * 100) /
+      100
+    );
+  }
+
   function processIngredient(
     ingredient: string,
     servings: number,
     count: number
   ): string {
     const ingredientParts = ingredient.split(" ");
+    let quantity = ingredientParts[0];
 
-    if (!ingredientParts[1].includes("1")) {
-      return ingredient;
+    if (quantity.includes("/")) {
+      const [numerator, denominator] = quantity.split("/").map(Number);
+      const scaledQuantity = scaleFraction(
+        numerator,
+        denominator,
+        servings,
+        count
+      );
+      ingredientParts[0] = scaledQuantity.toString();
+      return ingredientParts.join(" ");
     }
 
-    const [numerator, denominator] = ingredientParts[1].split("/").map(Number);
-    const scaledQuantity =
-      Math.round(
-        ((numerator / denominator + Number(ingredientParts[0])) / count) *
-          servings *
-          10
-      ) / 10;
+    if (ingredientParts[1]?.includes("/")) {
+      const [numerator, denominator] = ingredientParts[1]
+        .split("/")
+        .map(Number);
+      const scaledQuantity = scaleFraction(
+        numerator,
+        denominator,
+        servings,
+        count
+      );
+      ingredientParts[0] = (
+        Number(ingredientParts[0]) + scaledQuantity
+      ).toString();
+      ingredientParts.splice(1, 1);
+      return ingredientParts.join(" ");
+    }
 
-    ingredientParts[0] = scaledQuantity.toString();
-    ingredientParts[1] = "";
-    return ingredientParts.join(" ");
+    return ingredient;
   }
 
   meals.forEach((meal) => {
@@ -36,11 +64,9 @@ export async function getMeal() {
 
     ingredients
       .split("|")
-      .map((ingredient) => {
-        return ingredient.includes(";") ? ingredient.split(";")[0] : ingredient;
-      })
+      .map((ingredient) => ingredient.split(";")[0])
       .forEach((ingredient) => {
-        buyList.push(processIngredient(ingredient, servings, count));
+        buyList.push(processIngredient(ingredient, Number(servings), count));
       });
   });
 
@@ -68,7 +94,6 @@ function combineIngredients(input: string[]): string[] {
       ingredientMap[ingredient] = { quantity, unit };
     }
   }
-
   const result: string[] = [];
   for (let ingredient in ingredientMap) {
     const { quantity, unit } = ingredientMap[ingredient];
