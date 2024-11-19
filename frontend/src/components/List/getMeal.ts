@@ -10,8 +10,6 @@ export async function getMeal() {
     servings: number,
     count: number
   ): number {
-    console.log(numerator, denominator, servings, count);
-    console.log((numerator / denominator / count) * Number(servings) * 100);
     return (
       Math.round((numerator / denominator / count) * Number(servings) * 100) /
       100
@@ -27,7 +25,6 @@ export async function getMeal() {
     let quantity = ingredientParts[0];
 
     if (quantity.includes("/")) {
-      console.log(quantity);
       const [numerator, denominator] = quantity.split("/").map(Number);
       const scaledQuantity = scaleFraction(
         numerator,
@@ -35,7 +32,6 @@ export async function getMeal() {
         servings,
         count
       );
-      console.log(scaledQuantity);
       ingredientParts[0] = scaledQuantity.toString();
       return ingredientParts.join(" ");
     }

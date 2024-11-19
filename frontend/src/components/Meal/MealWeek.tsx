@@ -55,7 +55,7 @@ export function MealWeek() {
     <section>
       <header className="flex flex-col items-center">
         <h2 className="mb-2 text-4xl text-primary font-bold ">Weeks</h2>
-        <hr className="w-2/4"></hr>
+        <hr className="w-2/4 border-t-2 border-primary"></hr>
       </header>
       <form className="flex flex-col items-center">
         {count.map((count) => (
