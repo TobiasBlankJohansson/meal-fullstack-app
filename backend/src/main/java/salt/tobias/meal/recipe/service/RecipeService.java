@@ -29,7 +29,7 @@ public class RecipeService {
                 "",  // No instructions provided in the mock
                 "2"
         )));
-        return null;
+        return recipes;
     }
 
     public boolean saveRecipes(double[] Servings, RecipeItem[] recipes){
