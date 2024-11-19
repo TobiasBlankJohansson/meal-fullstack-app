@@ -59,7 +59,7 @@ export async function getMeal() {
   }
 
   meals.forEach((meal) => {
-    const { servings, ingredients } = meal.meal;
+    const { servings, ingredients } = meal.recipe;
     const count = meal.servings;
 
     if (!ingredients || count == 0) return;

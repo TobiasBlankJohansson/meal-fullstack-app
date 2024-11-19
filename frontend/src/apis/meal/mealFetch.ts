@@ -2,7 +2,7 @@ import { mealItem } from "../../types/meal";
 
 export type mealFetch = {
   servings: number;
-  meal: mealItem;
+  recipe: mealItem;
 };
 
 const emptyMeal: mealItem = {

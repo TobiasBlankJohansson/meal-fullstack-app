@@ -19,7 +19,6 @@ export function MealRecipe({ setMeal, mealSelect }: mealRecipeProp) {
       const fetchRecipes = await getRecipe();
       setRecipes(() => fetchRecipes);
     };
-    console.log("help");
     getRecipes();
   }, []);
 

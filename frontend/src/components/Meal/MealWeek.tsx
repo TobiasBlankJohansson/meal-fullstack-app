@@ -42,7 +42,7 @@ export function MealWeek() {
       const mealArr: mealItem[] = [];
       const servingArr: number[] = [];
       count.forEach((i) => {
-        mealArr.push(meals[i].meal);
+        mealArr.push(meals[i].recipe);
         servingArr.push(meals[i].servings);
       });
       setMeal(() => mealArr);
