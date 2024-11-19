@@ -72,11 +72,17 @@ export async function getMeal() {
       .split("|")
       .map((ingredient) => ingredient.split(";")[0])
       .forEach((ingredient) => {
-        buyList.push(processIngredient(ingredient, Number(servings), count));
+        buyList.push(
+          processIngredient(ingredient, controllServings(servings), count)
+        );
       });
   });
 
   return combineIngredients(buyList);
+}
+
+function controllServings(servings: string): number {
+  return servings.split(" ").map(Number)[0];
 }
 
 function combineIngredients(input: string[]): string[] {

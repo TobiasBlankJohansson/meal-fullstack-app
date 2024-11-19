@@ -15,12 +15,12 @@ const emptyMeal: mealItem = {
 export const getMeals = async (): Promise<mealFetch[]> => {
   return [
     { servings: 0, meal: emptyMeal },
-    { servings: 1, meal: emptyMeal },
-    { servings: 2, meal: emptyMeal },
-    { servings: 3, meal: emptyMeal },
-    { servings: 4, meal: emptyMeal },
+    { servings: 0, meal: emptyMeal },
+    { servings: 0, meal: emptyMeal },
+    { servings: 0, meal: emptyMeal },
+    { servings: 0, meal: emptyMeal },
     {
-      servings: 2,
+      servings: 0,
       meal: {
         title: "Moosewood Eggplant and Randomness",
         ingredients:
@@ -31,7 +31,7 @@ export const getMeals = async (): Promise<mealFetch[]> => {
       },
     },
     {
-      servings: 2,
+      servings: 0,
       meal: {
         title: "banan",
         ingredients:
