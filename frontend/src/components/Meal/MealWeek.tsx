@@ -57,7 +57,16 @@ export function MealWeek() {
         <h2 className="mb-2 text-4xl text-primary font-bold ">Weeks</h2>
         <hr className="w-2/4 border-t-2 border-primary"></hr>
       </header>
-      <form className="flex flex-col items-center">
+      <form
+        className="flex flex-col items-center"
+        onSubmit={(e) => {
+          e.preventDefault();
+          const save = async () => {
+            const postFetch = await postMeals({ servings, meal });
+          };
+          save();
+        }}
+      >
         {count.map((count) => (
           <WeekFormItem
             count={count}
@@ -71,13 +80,7 @@ export function MealWeek() {
         ))}
         <button
           className="btn btn-secondary hover:btn-primary hover:text-base-100 mt-5 w-1/2 h-16 text-2xl text-base-100 mb-10"
-          onClick={(e) => {
-            e.preventDefault();
-            const save = async () => {
-              const postFetch = await postMeals({ servings, meal });
-            };
-            save();
-          }}
+          type="submit"
         >
           Save
         </button>
