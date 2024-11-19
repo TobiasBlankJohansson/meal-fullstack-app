@@ -28,6 +28,6 @@ public class RecipeController {
 
     @PostMapping
     public ResponseEntity<Boolean> saveRecipes(@RequestBody RecipeRequestDto recipeRequestDto){
-        return ResponseEntity.accepted().body(true);
+        return ResponseEntity.accepted().body(recipeService.saveRecipes(recipeRequestDto.servings(),recipeRequestDto.recipes()));
     }
 }
