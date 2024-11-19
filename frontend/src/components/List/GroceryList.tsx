@@ -8,6 +8,7 @@ export function GroceryList() {
     const getMeal = async () => {
       const meals: mealFetch[] = await getMeals();
       const buyList: string[] = [];
+
       meals.forEach((meal) => {
         const servings = meal.meal.servings;
         const ingredients = meal.meal.ingredients;
@@ -15,6 +16,7 @@ export function GroceryList() {
         if (ingredients == "") {
           return;
         }
+        
         ingredients
           .split("|")
           .map((ingredient) => {
@@ -25,23 +27,27 @@ export function GroceryList() {
           })
           .forEach((ingredient) => {
             const ingredientSplit = ingredient.split(" ");
-            if (ingredientSplit[1].includes("1")) {
-              const devide = ingredientSplit[1].split("/");
-              ingredientSplit[0] =
-                Math.round(
-                  ((Number(ingredient[0]) +
-                    Number(devide[0]) / Number(devide[1])) /
-                    count) *
-                    Number(servings) *
-                    10
-                ) /
-                  10 +
-                "";
-              ingredientSplit[1] = "";
+            if (!ingredientSplit[1].includes("1")) {
+              buyList.push(ingredientSplit.join(" "));
+              return;
             }
+
+            const devide = ingredientSplit[1].split("/");
+            ingredientSplit[0] =
+              Math.round(
+                ((Number(ingredient[0]) +
+                  Number(devide[0]) / Number(devide[1])) /
+                  count) *
+                  Number(servings) *
+                  10
+              ) /
+                10 +
+              "";
+            ingredientSplit[1] = "";
             buyList.push(ingredientSplit.join(" "));
           });
       });
+      buyList.sort();
       setList(() => buyList);
     };
     getMeal();
@@ -54,7 +60,7 @@ export function GroceryList() {
         <hr className="w-2/4"></hr>
       </header>
       <main className="flex justify-center">
-        <ol className="w-2/4">
+        <ol className="w-2/5">
           {list.map((item) => (
             <li className="list-disc">{item}</li>
           ))}
