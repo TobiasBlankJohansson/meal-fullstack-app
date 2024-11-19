@@ -13,8 +13,18 @@ const emptyMeal: mealItem = {
 };
 
 export const getMeals = async (): Promise<mealFetch[]> => {
+  const fetchMeal = fetch("http://localhost:8080/api/recipes");
+  console.log((await fetchMeal).json());
   return [
-    { servings: 0, meal: emptyMeal },
+    {
+      servings: 0,
+      meal: {
+        title: "select",
+        ingredients: "",
+        instructions: "",
+        servings: "0",
+      },
+    },
     { servings: 0, meal: emptyMeal },
     { servings: 0, meal: emptyMeal },
     { servings: 0, meal: emptyMeal },
