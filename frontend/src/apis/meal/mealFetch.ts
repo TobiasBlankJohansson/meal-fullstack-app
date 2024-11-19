@@ -29,5 +29,18 @@ export const postMeals = async ({
   servings,
   meal,
 }: postMealsProp): Promise<boolean> => {
-  return true;
+  const fetchMeal = await fetch("http://localhost:8080/api/recipes", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      servings,
+      meal,
+    }),
+  });
+  if (!fetchMeal.ok) {
+    throw new Error();
+  }
+  return await fetchMeal.json();
 };
