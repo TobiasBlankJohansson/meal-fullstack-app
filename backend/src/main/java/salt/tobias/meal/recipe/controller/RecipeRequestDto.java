@@ -1,6 +1,7 @@
 package salt.tobias.meal.recipe.controller;
 
-public record RecipeRequestDto(Number[] serving,RecipeItemDto[] recipeItemDto) {
-    private record RecipeItemDto(String title, String ingredients, String instructions, String servings) {
-    }
+import salt.tobias.meal.recipe.service.RecipeItem;
+
+public record RecipeRequestDto(double[] serving, RecipeItem[] recipeItemDto) {
+
 }
