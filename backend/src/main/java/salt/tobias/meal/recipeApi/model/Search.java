@@ -40,4 +40,8 @@ public class Search {
         RecipeSearch newRecipe = new RecipeSearch(recipe, this);
         recipeSearch.add(newRecipe);
     }
+
+    public List<RecipeSearch> getRecipeSearch() {
+        return recipeSearch;
+    }
 }

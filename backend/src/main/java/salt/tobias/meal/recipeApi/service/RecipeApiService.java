@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 import salt.tobias.meal.recipe.service.RecipeItem;
 import salt.tobias.meal.recipeApi.model.Recipe;
+import salt.tobias.meal.recipeApi.model.RecipeSearch;
+import salt.tobias.meal.recipeApi.model.Search;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,33 +17,38 @@ public class RecipeApiService {
     private final RecipeRepository recipeRepo;
     private final SearchRepository searchRepo;
 
-    private final List<RecipeItem> recipes = new ArrayList<>();
     private final List<RecipeSearch> searches = new ArrayList<>();
 
     public RecipeApiService(RecipeRepository recipeRepo, SearchRepository searchRepo) {
         this.recipeRepo = recipeRepo;
         this.searchRepo = searchRepo;
     }
-
-    private record RecipeSearch(String searchWordPage, List<RecipeItem> recipes) {}
-
     public List<Recipe> getRecipe(String searchWord, int page) {
 
         if(searchWord.contains("random")){
             return recipeRepo.findAll();
         }
+
+        List<Recipe> recipes = new ArrayList<>();
+        recipes.addAll(getPage(searchWord, page));
+        recipes.addAll(getPage(searchWord, page+1));
+
+        return recipes;
+    }
+
+    private List<Recipe> getPage(String searchWord, int page){
         if(searchRepo.existsByWordAndPage(searchWord,page)){
-            return recipes;
+            return searchRepo.findByWordAndPage(searchWord,page)
+                    .getRecipeSearch().stream()
+                    .map(RecipeSearch::getRecipe).toList();
         }
         var recipePage = fetchRecipes(searchWord, page);
-        var recipeNextPage = fetchRecipes(searchWord, page+1);
+        Search search = new Search(searchWord, page);
 
-        recipes.addAll(recipePage);
-        recipes.addAll(recipeNextPage);
+        assert recipePage != null;
+        recipePage.forEach(search::addRecipeSearch);
 
-        searches.add(new RecipeSearch(searchWord+page, recipePage));
-        searches.add(new RecipeSearch(searchWord+(page+1), recipeNextPage));
-        recipePage.addAll(recipeNextPage);
+        searchRepo.save(search);
         return recipePage;
     }
 
@@ -51,8 +58,7 @@ public class RecipeApiService {
 
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            List<RecipeItem> recipes = objectMapper.readValue(jsonData, objectMapper.getTypeFactory().constructCollectionType(List.class, RecipeItem.class));
-            return recipes;
+            return objectMapper.readValue(jsonData, objectMapper.getTypeFactory().constructCollectionType(List.class, RecipeItem.class));
         } catch (IOException e) {
             e.printStackTrace();
         }

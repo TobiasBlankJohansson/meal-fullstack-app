@@ -24,4 +24,12 @@ public class RecipeSearch {
         this.recipe = recipe;
         this.search = search;
     }
+
+    public Recipe getRecipe() {
+        return recipe;
+    }
+
+    public Search getSearch() {
+        return search;
+    }
 }
