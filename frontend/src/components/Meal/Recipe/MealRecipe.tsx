@@ -13,19 +13,19 @@ export function MealRecipe({ setMeal, mealSelect }: mealRecipeProp) {
   const [recipeCount, SetRecipeCount] = useState<number>(0);
   const [selectedMeal, setSelectedMeal] = useState<number>(0);
   const [recipes, setRecipes] = useState<mealItem[]>([]);
+  const [recipeSearch, setRecipeSearch] = useState<string>("");
 
   useEffect(() => {
     const getRecipes = async () => {
-      const fetchRecipes = await getRecipe();
+      const fetchRecipes = await getRecipe({ recipeCount, recipeSearch });
       setRecipes(() => fetchRecipes);
     };
     getRecipes();
   }, []);
 
-  const [recipeSearch, setRecipeSearch] = useState<string>("");
   const handelSearch: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-    const recipe = await getRecipe(recipeCount, recipeSearch);
+    const recipe = await getRecipe({ recipeCount, recipeSearch });
     setRecipes(() => recipe);
     SetRecipeCount(() => 0);
   };
