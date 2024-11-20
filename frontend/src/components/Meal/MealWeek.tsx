@@ -62,7 +62,7 @@ export function MealWeek() {
         onSubmit={(e) => {
           e.preventDefault();
           const save = async () => {
-            const postFetch = await postMeals({ servings, meal });
+            const postFetch = await postMeals({ servings, recipes: meal });
           };
           save();
         }}
