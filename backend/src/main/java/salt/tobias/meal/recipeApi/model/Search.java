@@ -17,9 +17,6 @@ public class Search {
     @OneToMany(mappedBy = "search")
     private List<RecipeSearch> recipeSearch;
 
-    @OneToMany(mappedBy = "search")
-    private List<RecipeItem> RecipeItem;
-
     public Search() {
     }
 

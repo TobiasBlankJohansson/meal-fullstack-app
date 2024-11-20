@@ -18,4 +18,7 @@ public class Recipe {
 
     @OneToMany(mappedBy = "recipe")
     private List<RecipeSearch> recipeSearch;
+
+    @OneToMany(mappedBy = "recipe")
+    private List<RecipeItem> recipeItem;
 }
