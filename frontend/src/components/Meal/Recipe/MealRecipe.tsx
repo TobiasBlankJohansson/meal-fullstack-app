@@ -22,6 +22,13 @@ export function MealRecipe({ setMeal, mealSelect }: mealRecipeProp) {
     getRecipes();
   }, []);
 
+  const [recipeSearch, setRecipeSearch] = useState<string>("");
+  const handelSearch: React.FormEventHandler<HTMLFormElement> = async (e) => {
+    e.preventDefault();
+    const recipe = await getRecipe(recipeCount, recipeSearch);
+    setRecipes(() => recipe);
+  };
+
   return (
     <>
       <dialog id="meal-recipe" className="modal">
@@ -34,14 +41,14 @@ export function MealRecipe({ setMeal, mealSelect }: mealRecipeProp) {
           <header className="flex justify-center">
             <h3 className="text-2xl font-bold">Select food</h3>
           </header>
-          <form
-            className="my-2"
-            onSubmit={(e) => {
-              e.preventDefault();
-            }}
-          >
+          <form className="my-2" onSubmit={handelSearch}>
             <label className="input input-bordered flex items-center gap-2">
-              <input type="text" className="grow" placeholder="Search" />
+              <input
+                type="text"
+                className="grow"
+                placeholder="Search"
+                onChange={(e) => setRecipeSearch(e.target.value)}
+              />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 16 16"
