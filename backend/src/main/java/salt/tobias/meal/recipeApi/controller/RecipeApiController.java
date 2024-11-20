@@ -1,6 +1,6 @@
 package salt.tobias.meal.recipeApi.controller;
 import org.springframework.web.bind.annotation.*;
-import salt.tobias.meal.recipe.service.RecipeItem;
+import salt.tobias.meal.recipeApi.model.Recipe;
 import salt.tobias.meal.recipeApi.service.RecipeApiService;
 
 import java.util.List;
@@ -17,7 +17,7 @@ public class RecipeApiController {
     }
 
     @GetMapping("/{searchWord}/{page}")
-    public List<RecipeItem> recipeApi(@PathVariable String searchWord, @PathVariable int page) {
+    public List<Recipe> recipeApi(@PathVariable String searchWord, @PathVariable int page) {
         return recipeApiService.getRecipe(searchWord,page);
     }
 

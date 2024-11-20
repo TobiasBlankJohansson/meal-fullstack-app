@@ -42,10 +42,15 @@ public class RecipeApiService {
                     .getRecipeSearch().stream()
                     .map(RecipeSearch::getRecipe).toList();
         }
-        var recipePage = fetchRecipes(searchWord, page);
-        Search search = new Search(searchWord, page);
 
-        assert recipePage != null;
+        var recipePage = fetchRecipes(searchWord, page).stream().map(recipe -> {
+            if(!recipeRepo.existsByTitleAndServings(recipe.getTitle(),recipe.getServings())){
+                return recipe;
+            }
+            return recipeRepo.save(recipe);
+        }).toList();
+
+        Search search = new Search(searchWord, page);
         recipePage.forEach(search::addRecipeSearch);
 
         searchRepo.save(search);
