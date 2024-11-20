@@ -36,4 +36,9 @@ public class Search {
     public long getPage() {
         return page;
     }
+
+    public void addRecipeSearch(Recipe recipe) {
+        RecipeSearch newRecipe = new RecipeSearch(recipe, this);
+        recipeSearch.add(newRecipe);
+    }
 }

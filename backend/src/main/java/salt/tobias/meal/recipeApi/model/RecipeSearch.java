@@ -16,4 +16,12 @@ public class RecipeSearch {
     @ManyToOne(optional = false)
     @JoinColumn(name = "search_id")
     private Search search;
+
+    public RecipeSearch() {
+    }
+
+    public RecipeSearch(Recipe recipe, Search search) {
+        this.recipe = recipe;
+        this.search = search;
+    }
 }

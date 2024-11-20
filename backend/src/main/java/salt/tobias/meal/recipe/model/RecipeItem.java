@@ -18,4 +18,13 @@ public class RecipeItem {
     @ManyToOne(optional = false)
     @JoinColumn(name = "week_id")
     private Week week;
+
+    public RecipeItem() {
+    }
+
+    public RecipeItem(long servings, Recipe recipe, Week week) {
+        this.servings = servings;
+        this.recipe = recipe;
+        this.week = week;
+    }
 }

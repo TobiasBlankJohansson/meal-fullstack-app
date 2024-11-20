@@ -21,4 +21,34 @@ public class Recipe {
 
     @OneToMany(mappedBy = "recipe")
     private List<RecipeItem> recipeItem;
+
+    public Recipe() {
+    }
+
+    public Recipe(String title, String ingredients, String instructions, String servings) {
+        this.title = title;
+        this.ingredients = ingredients;
+        this.instructions = instructions;
+        this.servings = servings;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getIngredients() {
+        return ingredients;
+    }
+
+    public String getInstructions() {
+        return instructions;
+    }
+
+    public String getServings() {
+        return servings;
+    }
 }
