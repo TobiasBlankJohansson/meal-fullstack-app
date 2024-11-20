@@ -27,6 +27,7 @@ export function MealRecipe({ setMeal, mealSelect }: mealRecipeProp) {
     e.preventDefault();
     const recipe = await getRecipe(recipeCount, recipeSearch);
     setRecipes(() => recipe);
+    SetRecipeCount(() => 0);
   };
 
   return (
