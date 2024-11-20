@@ -1,18 +1,18 @@
 package salt.tobias.meal.recipeApi.controller;
 import org.springframework.web.bind.annotation.*;
 import salt.tobias.meal.recipe.service.RecipeItem;
-import salt.tobias.meal.recipeApi.service.recipeApiService;
+import salt.tobias.meal.recipeApi.service.RecipeApiService;
 
 import java.util.List;
 
 @RestController
 @CrossOrigin
 @RequestMapping("/api/recipeApi")
-public class recipeApiController {
+public class RecipeApiController {
 
-    public final recipeApiService recipeApiService;
+    public final RecipeApiService recipeApiService;
 
-    public recipeApiController(recipeApiService recipeApiService) {
+    public RecipeApiController(RecipeApiService recipeApiService) {
         this.recipeApiService = recipeApiService;
     }
 

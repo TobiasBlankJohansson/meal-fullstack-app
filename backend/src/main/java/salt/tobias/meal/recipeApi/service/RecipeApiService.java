@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class recipeApiService {
+public class RecipeApiService {
 
     private final List<RecipeItem> recipes = new ArrayList<>();
     private final List<RecipeSearch> searches = new ArrayList<>();
