@@ -19,7 +19,7 @@ export function MealRecipeItem({
     <>
       <li className="flex justify-between items-center my-1">
         <button
-          className="btn btn-ghost"
+          className="btn btn-ghost w-3/4"
           onClick={() => {
             setSelectedMeal(() => arrayCount);
             document.getElementById("meal-details").showModal();
