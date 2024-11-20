@@ -8,7 +8,7 @@ import salt.tobias.meal.recipe.service.RecipeService;
 
 import java.util.List;
 
-@Controller
+@RestController
 @CrossOrigin
 @RequestMapping("/api/recipes")
 public class RecipeController {
