@@ -1,6 +1,9 @@
 package salt.tobias.meal.recipeApi.model;
 
 import jakarta.persistence.*;
+import salt.tobias.meal.recipe.model.RecipeItem;
+
+import java.util.List;
 
 @Entity
 public class Search {
@@ -10,6 +13,12 @@ public class Search {
 
     private String word;
     private long page;
+
+    @OneToMany(mappedBy = "search")
+    private List<RecipeSearch> recipeSearch;
+
+    @OneToMany(mappedBy = "search")
+    private List<RecipeItem> RecipeItem;
 
     public Search() {
     }

@@ -1,9 +1,8 @@
 package salt.tobias.meal.recipe.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Week {
@@ -12,4 +11,7 @@ public class Week {
     private long id;
 
     private String week;
+
+    @OneToMany(mappedBy = "week")
+    private List<RecipeItem> recipeItem;
 }
