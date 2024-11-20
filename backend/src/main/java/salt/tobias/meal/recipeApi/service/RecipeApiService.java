@@ -11,8 +11,16 @@ import java.util.List;
 @Service
 public class RecipeApiService {
 
+    private final RecipeRepository recipeRepo;
+    private final SearchRepository searchRepo;
+
     private final List<RecipeItem> recipes = new ArrayList<>();
     private final List<RecipeSearch> searches = new ArrayList<>();
+
+    public RecipeApiService(RecipeRepository recipeRepo, SearchRepository searchRepo) {
+        this.recipeRepo = recipeRepo;
+        this.searchRepo = searchRepo;
+    }
 
     private record RecipeSearch(String searchWordPage, List<RecipeItem> recipes) {}
 
