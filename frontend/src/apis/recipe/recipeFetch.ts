@@ -1,6 +1,14 @@
 import { mealItem } from "../../types/meal";
 
-export const getRecipe = async (): Promise<mealItem[]> => {
+type GetRecipeProp = {
+  recipeCount: number;
+  recipeSearch: string;
+};
+
+export const getRecipe = async ({
+  recipeCount,
+  recipeSearch,
+}: GetRecipeProp): Promise<mealItem[]> => {
   return [
     {
       title: "Stracciatella (Italian Wedding Soup)",
