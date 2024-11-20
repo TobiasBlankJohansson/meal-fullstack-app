@@ -13,7 +13,7 @@ const emptyMeal: mealItem = {
 };
 
 export const getMeals = async (): Promise<mealFetch[]> => {
-  const fetchMeal = await fetch("http://localhost:8080/api/recipes");
+  const fetchMeal = await fetch("http://localhost:3000/api/recipes");
   if (!fetchMeal.ok) {
     throw new Error();
   }
@@ -30,7 +30,7 @@ export const postMeals = async ({
   recipes
 }: postMealsProp): Promise<boolean> => {
   console.log(recipes);
-  const fetchMeal = await fetch("http://localhost:8080/api/recipes", {
+  const fetchMeal = await fetch("http://localhost:3000/api/recipes", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

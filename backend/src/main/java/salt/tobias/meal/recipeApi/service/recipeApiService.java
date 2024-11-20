@@ -17,10 +17,8 @@ public class recipeApiService {
     private record RecipeSearch(String searchWordPage, List<RecipeItem> recipes) {}
 
     public List<RecipeItem> getRecipe(String searchWord, int page) {
-        System.out.println(searchWord);
 
         if(searchWord.equals("random")){
-            System.out.println(recipes);
             return recipes;
         }
         if(searches.contains(searchWord+page)){

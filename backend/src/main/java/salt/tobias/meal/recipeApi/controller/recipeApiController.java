@@ -1,5 +1,4 @@
 package salt.tobias.meal.recipeApi.controller;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import salt.tobias.meal.recipe.service.RecipeItem;
 import salt.tobias.meal.recipeApi.service.recipeApiService;

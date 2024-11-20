@@ -1,0 +1,27 @@
+debug: true
+server:
+  port: 3000
+spring:
+  datasource:
+    url: ${URL_DB}
+    username: ${USERNAME_DB}
+    password: ${PASSWORD_DB}
+  jpa:
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: update
+  sql:
+    init:
+      platform: postgresql
+      mode: always
+  output:
+    ansi:
+      enabled: always
+  config:
+    import: optional:file:.env.local[.properties]
+logging:
+  level:
+    org:
+      springframework:
+        boot:
+          autoconfigure: ERROR

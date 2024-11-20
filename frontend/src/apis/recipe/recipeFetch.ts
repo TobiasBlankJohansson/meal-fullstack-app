@@ -14,7 +14,7 @@ export const getRecipe = async ({
     recipeSearch = "random";
   }
   const fetchMeal = await fetch(
-    `http://localhost:8080/api/recipeApi/${recipeSearch}/${recipeCount}`
+    `http://localhost:3000/api/recipeApi/${recipeSearch}/${recipeCount}`
   );
   if (!fetchMeal.ok) {
     throw new Error();
