@@ -3,9 +3,9 @@ server:
   port: 3000
 spring:
   datasource:
-    url: ${URL_DB}
-    username: ${USERNAME_DB}
-    password: ${PASSWORD_DB}
+    url: jdbc:postgresql://localhost:5432/mealdb
+    username: admin
+    password: admin
   jpa:
     defer-datasource-initialization: true
     hibernate:
