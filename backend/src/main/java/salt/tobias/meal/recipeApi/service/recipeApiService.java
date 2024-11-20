@@ -1,21 +1,26 @@
 package salt.tobias.meal.recipeApi.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.stereotype.Service;
 import salt.tobias.meal.recipe.service.RecipeItem;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class recipeApiService {
 
-    private List<RecipeItem> recipes = new ArrayList<>();
-    private List<RecipeSearch> searches = new ArrayList<>();
+    private final List<RecipeItem> recipes = new ArrayList<>();
+    private final List<RecipeSearch> searches = new ArrayList<>();
 
     private record RecipeSearch(String searchWordPage, List<RecipeItem> recipes) {}
 
     public List<RecipeItem> getRecipe(String searchWord, int page) {
+        System.out.println(searchWord);
+
         if(searchWord.equals("random")){
+            System.out.println(recipes);
             return recipes;
         }
         if(searches.contains(searchWord+page)){
@@ -23,6 +28,9 @@ public class recipeApiService {
         }
         var recipePage = fetchRecipes(searchWord, page);
         var recipeNextPage = fetchRecipes(searchWord, page+1);
+
+        recipes.addAll(recipePage);
+        recipes.addAll(recipeNextPage);
 
         searches.add(new RecipeSearch(searchWord+page, recipePage));
         searches.add(new RecipeSearch(searchWord+(page+1), recipeNextPage));
