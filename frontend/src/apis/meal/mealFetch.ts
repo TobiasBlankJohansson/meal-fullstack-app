@@ -27,7 +27,6 @@ export const postMeals = async ({
   servings,
   recipes,
 }: postMealsProp): Promise<boolean> => {
-  console.log(recipes);
   const fetchMeal = await fetch("http://localhost:3000/api/recipes/1", {
     method: "POST",
     headers: {
