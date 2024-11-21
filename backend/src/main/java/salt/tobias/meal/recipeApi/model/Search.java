@@ -13,15 +13,16 @@ public class Search {
     private String word;
     private long page;
 
-    @OneToMany(mappedBy = "search")
+    @OneToMany(mappedBy = "search", cascade = {CascadeType.MERGE, CascadeType.REMOVE})
     private List<RecipeSearch> recipeSearch;
 
     public Search() {
     }
 
-    public Search(String word, long page) {
+    public Search(String word, long page, List<RecipeSearch> recipeSearch) {
         this.word = word;
         this.page = page;
+        this.recipeSearch = recipeSearch;
     }
 
     public long getId() {

@@ -12,14 +12,16 @@ public class Recipe {
     private long id;
 
     private String title;
+    @Column(columnDefinition = "TEXT")
     private String ingredients;
+    @Column(columnDefinition = "TEXT")
     private String instructions;
     private String servings;
 
-    @OneToMany(mappedBy = "recipe")
+    @OneToMany(mappedBy = "recipe", cascade = {CascadeType.MERGE, CascadeType.REMOVE})
     private List<RecipeSearch> recipeSearch;
 
-    @OneToMany(mappedBy = "recipe")
+    @OneToMany(mappedBy = "recipe", cascade = {CascadeType.MERGE, CascadeType.REMOVE})
     private List<RecipeItem> recipeItem;
 
     public Recipe() {

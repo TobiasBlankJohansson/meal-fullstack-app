@@ -2,7 +2,6 @@ package salt.tobias.meal.recipeApi.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
-import salt.tobias.meal.recipe.service.RecipeItem;
 import salt.tobias.meal.recipeApi.model.Recipe;
 import salt.tobias.meal.recipeApi.model.RecipeSearch;
 import salt.tobias.meal.recipeApi.model.Search;
@@ -16,8 +15,6 @@ public class RecipeApiService {
 
     private final RecipeRepository recipeRepo;
     private final SearchRepository searchRepo;
-
-    private final List<RecipeSearch> searches = new ArrayList<>();
 
     public RecipeApiService(RecipeRepository recipeRepo, SearchRepository searchRepo) {
         this.recipeRepo = recipeRepo;
@@ -44,13 +41,13 @@ public class RecipeApiService {
         }
 
         var recipePage = fetchRecipes(searchWord, page).stream().map(recipe -> {
-            if(!recipeRepo.existsByTitleAndServings(recipe.getTitle(),recipe.getServings())){
-                return recipe;
+            if(recipeRepo.existsByTitleAndServings(recipe.getTitle(),recipe.getServings())){
+                return recipeRepo.findByTitleAndServings(recipe.getTitle(),recipe.getServings());
             }
             return recipeRepo.save(recipe);
         }).toList();
 
-        Search search = new Search(searchWord, page);
+        Search search = searchRepo.save(new Search(searchWord, page, new ArrayList<>()));
         recipePage.forEach(search::addRecipeSearch);
 
         searchRepo.save(search);
@@ -63,7 +60,7 @@ public class RecipeApiService {
 
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            return objectMapper.readValue(jsonData, objectMapper.getTypeFactory().constructCollectionType(List.class, RecipeItem.class));
+            return objectMapper.readValue(jsonData, objectMapper.getTypeFactory().constructCollectionType(List.class, Recipe.class));
         } catch (IOException e) {
             e.printStackTrace();
         }

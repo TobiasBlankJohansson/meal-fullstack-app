@@ -5,4 +5,6 @@ import salt.tobias.meal.recipeApi.model.Recipe;
 
 public interface RecipeRepository extends ListCrudRepository<Recipe, Long> {
     boolean existsByTitleAndServings(String title, String servings);
+
+    Recipe findByTitleAndServings(String title, String servings);
 }
