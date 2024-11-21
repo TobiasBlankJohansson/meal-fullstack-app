@@ -10,8 +10,9 @@ export async function getMeal() {
     servings: number,
     count: number
   ): number {
+    console.log((numerator / denominator / Number(servings))*count);
     return (
-      Math.round((numerator / denominator / count) * Number(servings) * 100) /
+      Math.round((numerator / denominator / Number(servings)) * count * 100) /
       100
     );
   }
@@ -53,7 +54,7 @@ export async function getMeal() {
       return ingredientParts.join(" ");
     }
     ingredientParts[0] =
-      Math.round((Number(quantity) / count) * Number(servings) * 100) / 100 +
+      Math.round((Number(quantity) / Number(servings)) * count * 100) / 100 +
       "";
     return ingredientParts.join(" ");
   }
