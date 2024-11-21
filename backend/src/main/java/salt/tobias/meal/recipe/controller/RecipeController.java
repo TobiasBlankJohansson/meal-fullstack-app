@@ -20,8 +20,8 @@ public class RecipeController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<List<MealServings>> getRecipes(){
-        return ResponseEntity.ok(recipeService.getRecipes());
+    public ResponseEntity<List<MealServings>> getRecipes(@PathVariable long id){
+        return ResponseEntity.ok(recipeService.getRecipes(id));
     }
 
     @PostMapping("{id}")
