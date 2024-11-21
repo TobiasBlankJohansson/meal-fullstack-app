@@ -36,9 +36,9 @@ public class Week {
         return recipeItem;
     }
 
-    public void addRecipeSearch(Recipe recipe, long servings) {
+    public void addRecipeSearch(Recipe recipe, long servings, int index) {
         RecipeItem newRecipe = new RecipeItem(servings, recipe, this);
-        recipeItem.add(newRecipe);
+        recipeItem.add(index, newRecipe);
     }
 
 }

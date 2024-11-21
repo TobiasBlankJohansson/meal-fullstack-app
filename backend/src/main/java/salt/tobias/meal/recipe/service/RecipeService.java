@@ -1,6 +1,7 @@
 package salt.tobias.meal.recipe.service;
 
 import org.springframework.stereotype.Service;
+import salt.tobias.meal.recipe.model.Week;
 import salt.tobias.meal.recipeApi.model.Recipe;
 
 import java.util.ArrayList;
@@ -20,25 +21,21 @@ public class RecipeService {
             new MealServings(0, new RecipeItem("select", "", "", "0")),
             new MealServings(0, new RecipeItem("select", "", "", "0")),
             new MealServings(0, new RecipeItem("select", "", "", "0"))
-        ));
+    ));
 
     public RecipeService(WeekRepository weekRepo) {
         this.weekRepo = weekRepo;
     }
 
-    public List<MealServings> getRecipes(){
+    public List<MealServings> getRecipes() {
         return recipes;
     }
 
-    public boolean saveRecipes(double[] servings, Recipe[] recipes, long id){
-
-
-
-        List<MealServings> newRecipes = new ArrayList<>();
+    public boolean saveRecipes(long[] servings, Recipe[] recipes, long id) {
+        Week week = weekRepo.findById(id).get();
         for (int i = 0; i < 7; i++) {
-            newRecipes.add(new MealServings(servings[i],recipes[i]));
+            week.addRecipeSearch(recipes[i], servings[i], i);
         }
-        this.recipes = newRecipes;
         return true;
     }
 
