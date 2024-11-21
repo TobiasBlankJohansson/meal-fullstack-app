@@ -1,5 +1,5 @@
 import { mealItem } from "../../types/meal";
-import { mealFetch } from "../meal/mealFetch";
+import { meal } from "../meal/mealFetch";
 
 type GetRecipeProp = {
   recipeCount: number;
@@ -9,7 +9,7 @@ type GetRecipeProp = {
 export const getRecipe = async ({
   recipeCount,
   recipeSearch,
-}: GetRecipeProp): Promise<mealFetch[]> => {
+}: GetRecipeProp): Promise<meal[]> => {
   if (recipeSearch == "") {
     recipeSearch = "random";
   }

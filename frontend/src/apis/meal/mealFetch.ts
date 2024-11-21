@@ -1,6 +1,10 @@
 import { mealItem } from "../../types/meal";
 
-export type mealFetch = {
+type fetchMeal ={
+  recipe:meal[]
+}
+
+export type meal = {
   servings: number;
   recipe: mealItem;
 };
@@ -12,12 +16,13 @@ const emptyMeal: mealItem = {
   servings: "0",
 };
 
-export const getMeals = async (): Promise<mealFetch[]> => {
+export const getMeals = async (): Promise<meal[]> => {
   const fetchMeal = await fetch("http://localhost:3000/api/recipes/1");
   if (!fetchMeal.ok) {
     throw new Error();
   }
-  return await fetchMeal.json();
+  const recipe:fetchMeal = await fetchMeal.json()
+  return recipe.recipe;
 };
 
 type postMealsProp = {
