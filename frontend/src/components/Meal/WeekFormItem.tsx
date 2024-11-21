@@ -37,8 +37,8 @@ export function WeekFormItem({
       <div className="tooltip" data-tip="Select dinner">
         <button
           className={`btn w-full ${
-            meal.title == "empty" ? "btn-primary" : "btn-accent"
-          } btn-primary hover:bg-secondary text-md`}
+            meal.title == "empty" ? "" : "btn-primary text-white"
+          }  hover:bg-secondary text-md`}
           onClick={(e) => {
             e.preventDefault();
             setMealSelect(() => count);

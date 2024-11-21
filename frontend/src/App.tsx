@@ -1,5 +1,7 @@
-import { ToastContainer } from "react-toastify";
+import { Bounce, ToastContainer } from "react-toastify";
 import { MealApp } from "./components/MealApp";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
         draggable
         pauseOnHover
         theme="light"
+        transition={Bounce}
       />
     </>
   );

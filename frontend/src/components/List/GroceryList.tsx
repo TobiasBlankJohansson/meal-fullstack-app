@@ -19,7 +19,7 @@ export function GroceryList() {
         <hr className="w-2/4 border-t-2 border-primary" />
       </header>
       <main className="flex justify-center">
-        <ol className="w-2/5 text-lg text-gray-700 space-y-2 list-inside">
+        <ol className="w-auto text-lg text-gray-700 space-y-2 list-inside">
           {list.map((item) => (
             <li className="list-disc">{item}</li>
           ))}

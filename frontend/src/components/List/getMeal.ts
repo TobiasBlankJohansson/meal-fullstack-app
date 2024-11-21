@@ -1,7 +1,7 @@
-import { getMeals, mealFetch } from "../../apis/meal/mealFetch";
+import { getMeals, meal } from "../../apis/meal/mealFetch";
 
 export async function getMeal() {
-  const meals: mealFetch[] = await getMeals();
+  const meals: meal[] = await getMeals();
   const buyList: string[] = [];
 
   function scaleFraction(
@@ -10,7 +10,7 @@ export async function getMeal() {
     servings: number,
     count: number
   ): number {
-    console.log((numerator / denominator / Number(servings))*count);
+    console.log((numerator / denominator / Number(servings)) * count);
     return (
       Math.round((numerator / denominator / Number(servings)) * count * 100) /
       100

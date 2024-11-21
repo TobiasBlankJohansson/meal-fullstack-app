@@ -8,12 +8,12 @@ export default {
     themes: [
       {
         mytheme: {
-          primary: "#8BC34A",
-          secondary: "#FF7043",
-          accent: "#FFEB3B",
+          primary: "#4CAF50",
+          secondary: "#F97316",
+          accent: "#8BC34A",
           neutral: "#BDBDBD",
           "base-100": "#FFFFFF",
-          info: "#29B6F6",
+          info: "#0096c9",
           success: "#66BB6A",
           warning: "#FFCA28",
           error: "#E53935",

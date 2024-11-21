@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { MealRecipe } from "./Recipe/MealRecipe";
 import { WeekFormItem } from "./WeekFormItem";
 import { mealItem } from "../../types/meal";
-import { getMeals, mealFetch, postMeals } from "../../apis/meal/mealFetch";
+import { getMeals, meal, postMeals } from "../../apis/meal/mealFetch";
+import { toast } from "react-toastify";
 
 const week: string[] = [
   "Monday",
@@ -35,10 +36,13 @@ export function MealWeek() {
   ]);
   const [mealSelect, setMealSelect] = useState<number>(0);
   const [servings, setServings] = useState<number[]>([0, 0, 0, 0, 0, 0, 0]);
+  const [change, setChange] = useState<boolean>(false);
+
+  useEffect(() => setChange(() => true), [mealSelect, servings]);
 
   useEffect(() => {
     const getMeal = async () => {
-      const meals: mealFetch[] = await getMeals();
+      const meals: meal[] = await getMeals();
       const mealArr: mealItem[] = [];
       const servingArr: number[] = [];
       count.forEach((i) => {
@@ -54,15 +58,23 @@ export function MealWeek() {
   return (
     <section>
       <header className="flex flex-col items-center">
-        <h2 className="mb-2 text-4xl text-primary font-bold ">Dinner planner</h2>
+        <h2 className="mb-2 text-4xl text-primary font-bold ">
+          Dinner planner
+        </h2>
         <hr className="w-2/4 border-t-2 border-primary"></hr>
       </header>
       <form
         className="flex flex-col items-center"
         onSubmit={(e) => {
           e.preventDefault();
+          toast.info("saving...");
+
           const save = async () => {
-            const postFetch = await postMeals({ servings, recipes: meal });
+            try {
+              await postMeals({ servings, recipes: meal });
+              toast.success("Saved!");
+              setChange(() => false);
+            } catch (error) {}
           };
           save();
         }}
@@ -79,7 +91,9 @@ export function MealWeek() {
           ></WeekFormItem>
         ))}
         <button
-          className="btn btn-secondary hover:btn-primary hover:text-base-100 mt-5 w-1/2 h-16 text-2xl text-base-100 mb-10"
+          className={`btn btn-primary ${
+            !change && "btn-disabled"
+          } hover:btn-primary hover:text-base-100 mt-5 w-1/2 h-16 text-2xl text-base-100 mb-10`}
           type="submit"
         >
           Save
