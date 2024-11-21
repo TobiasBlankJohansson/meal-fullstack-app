@@ -9,13 +9,6 @@ export type meal = {
   recipe: mealItem;
 };
 
-const emptyMeal: mealItem = {
-  title: "select",
-  ingredients: "",
-  instructions: "",
-  servings: "0",
-};
-
 export const getMeals = async (): Promise<meal[]> => {
   const fetchMeal = await fetch("http://localhost:3000/api/recipes/1");
   if (!fetchMeal.ok) {

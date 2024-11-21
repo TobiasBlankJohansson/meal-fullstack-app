@@ -1,4 +1,3 @@
-import { mealItem } from "../../types/meal";
 import { meal } from "../meal/mealFetch";
 
 type GetRecipeProp = {
