@@ -19,13 +19,17 @@ public class RecipeController {
         this.recipeService = recipeService;
     }
 
-    @GetMapping
+    @GetMapping("{id}")
     public ResponseEntity<List<MealServings>> getRecipes(){
         return ResponseEntity.ok(recipeService.getRecipes());
     }
 
-    @PostMapping
-    public ResponseEntity<Boolean> saveRecipes(@RequestBody RecipeRequestDto recipeRequestDto){
-        return ResponseEntity.accepted().body(recipeService.saveRecipes(recipeRequestDto.servings(),recipeRequestDto.recipes()));
+    @PostMapping("{id}")
+    public ResponseEntity<Boolean> saveRecipes(@PathVariable long id,
+            @RequestBody RecipeRequestDto recipeRequestDto){
+        return ResponseEntity.accepted().body(recipeService.saveRecipes(
+                recipeRequestDto.servings(),
+                recipeRequestDto.recipes(),
+                id));
     }
 }

@@ -1,7 +1,7 @@
 package salt.tobias.meal.recipe.controller;
 
-import salt.tobias.meal.recipe.service.RecipeItem;
+import salt.tobias.meal.recipeApi.model.Recipe;
 
-public record RecipeRequestDto(double[] servings, RecipeItem[] recipes) {
+public record RecipeRequestDto(double[] servings, Recipe[] recipes) {
 
 }

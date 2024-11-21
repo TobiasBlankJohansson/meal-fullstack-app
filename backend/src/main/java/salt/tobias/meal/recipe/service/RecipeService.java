@@ -24,6 +24,9 @@ public class RecipeService {
     }
 
     public boolean saveRecipes(double[] servings, RecipeItem[] recipes){
+
+
+
         List<MealServings> newRecipes = new ArrayList<>();
         for (int i = 0; i < 7; i++) {
             newRecipes.add(new MealServings(servings[i],recipes[i]));
