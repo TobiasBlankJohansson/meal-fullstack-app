@@ -1,3 +1,10 @@
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  SignOutButton,
+  UserButton,
+} from "@clerk/clerk-react";
 import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 
@@ -41,18 +48,22 @@ export function Navbar() {
               </Link>
             </li>
           </ul>
-          <figure
-            tabIndex={0}
-            role="button"
-            className="btn btn-ghost btn-circle avatar"
-          >
-            <div className="w-10 rounded-full">
-              <img
-                alt="Tailwind CSS Navbar component"
-                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-              />
+          <SignedOut>
+            <SignInButton>
+              <button className="btn">Signed in</button>
+            </SignInButton>
+          </SignedOut>
+          <SignedIn>
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-neutral btn-circle avatar"
+            >
+              <div className="rounded-full">
+                <UserButton />
+              </div>
             </div>
-          </figure>
+          </SignedIn>
         </section>
       </nav>
       <Outlet />
