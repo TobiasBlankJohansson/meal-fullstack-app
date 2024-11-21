@@ -1,3 +1,7 @@
+api:
+  ninja:
+    X-Api-Key: s
+
 debug: true
 server:
   port: 3000
