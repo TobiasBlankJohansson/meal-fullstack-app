@@ -8,8 +8,12 @@ export function Navbar() {
     <>
       <nav className="navbar bg-primary text-primary-content px-20 border-b-2 border-gray-500">
         <header className="flex-1">
-          <Link to="/" onClick={()=>setSelected(()=>0)} className="text-base-100 text-3xl font-bold">
-            myMeal
+          <Link
+            to="/"
+            onClick={() => setSelected(() => 0)}
+            className="text-base-100 text-3xl font-bold"
+          >
+            GoodBytes/
           </Link>
         </header>
         <section className="flex-none">
@@ -17,8 +21,10 @@ export function Navbar() {
             <li className="px-5">
               <Link
                 to="/"
-                onClick={()=>setSelected(()=>0)}
-                className={`btn btn-ghost hover:bg-secondary text-lg text-base-100 font-bold ${selected == 0 && "bg-secondary"}`}
+                onClick={() => setSelected(() => 0)}
+                className={`btn btn-ghost hover:bg-secondary text-lg text-base-100 font-bold ${
+                  selected == 0 && "bg-secondary"
+                }`}
               >
                 Meal
               </Link>
@@ -26,8 +32,10 @@ export function Navbar() {
             <li className="px-5">
               <Link
                 to="/list"
-                onClick={()=>setSelected(()=>1)}
-                className={`btn btn-ghost hover:bg-secondary text-lg text-base-100 font-bold ${selected == 1 && "bg-secondary"}`}
+                onClick={() => setSelected(() => 1)}
+                className={`btn btn-ghost hover:bg-secondary text-lg text-base-100 font-bold ${
+                  selected == 1 && "bg-secondary"
+                }`}
               >
                 List
               </Link>

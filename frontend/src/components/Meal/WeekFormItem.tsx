@@ -23,7 +23,7 @@ export function WeekFormItem({
       <div className="tooltip" data-tip="Enter how many portions">
         <input
           type="number"
-          placeholder={servings + ""}
+          placeholder={0 ? (servings + "") : "Portions"}
           className="input w-full max-w-xs border-neutral focus:ring-primary focus:border-primary"
           min={0}
           onChange={(input) =>
