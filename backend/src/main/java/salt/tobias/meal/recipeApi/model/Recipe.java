@@ -21,7 +21,7 @@ public class Recipe {
     @OneToMany(mappedBy = "recipe", cascade = {CascadeType.MERGE, CascadeType.REMOVE})
     private List<RecipeSearch> recipeSearch;
 
-    @OneToMany(mappedBy = "recipe", cascade = {CascadeType.MERGE, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "recipe")
     private List<RecipeItem> recipeItem;
 
     public Recipe() {

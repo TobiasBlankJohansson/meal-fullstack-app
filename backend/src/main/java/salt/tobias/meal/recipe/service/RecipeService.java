@@ -21,11 +21,11 @@ public class RecipeService {
     }
 
     public Week getWeek(long id) {
-        if(!weekRepo.existsById(id)) {
-            Week week = weekRepo.save(new Week(id+"",new ArrayList<>()));
-            Recipe empty = recipeRepo.findById((long)0).get();
+        if(!weekRepo.findById(id).isPresent()) {
+            Week week = weekRepo.save(new Week(id, new ArrayList<>()));
+            Recipe empty = recipeRepo.findById((long) 1).get();
             for (int i = 0; i < 7; i++) {
-                week.addRecipeSearch(empty,0,i);
+                week.addRecipeSearch(empty, 0, i);
             }
             return weekRepo.save(week);
         }
@@ -33,10 +33,12 @@ public class RecipeService {
     }
 
     public boolean saveRecipes(long[] servings, Recipe[] recipes, long id) {
-        Week week = weekRepo.findById(id).get();
+        weekRepo.delete(weekRepo.findById(id).get());
+        Week week = weekRepo.save(new Week(id, new ArrayList<>()));
         for (int i = 0; i < 7; i++) {
             week.addRecipeSearch(recipes[i], servings[i], i);
         }
+        weekRepo.save(week);
         return true;
     }
 

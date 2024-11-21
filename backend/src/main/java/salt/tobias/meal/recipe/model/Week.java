@@ -6,36 +6,35 @@ import salt.tobias.meal.recipeApi.model.Recipe;
 import java.util.List;
 
 @Entity
+
 public class Week {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    private String week;
-
-    @OneToMany(mappedBy = "week")
+    @OneToMany(mappedBy = "week", cascade = {CascadeType.MERGE, CascadeType.REMOVE} ,orphanRemoval = true)
     private List<RecipeItem> recipeItem;
 
     public Week() {
     }
 
-    public Week(String week, List<RecipeItem> recipeItem) {
-        this.week = week;
+    public Week(Long week, List<RecipeItem> recipeItem) {
+        this.id = week;
         this.recipeItem = recipeItem;
     }
 
-    public long getId() {
+    public Long getWeek() {
         return id;
-    }
-
-    public String getWeek() {
-        return week;
     }
 
     public List<RecipeItem> getRecipeItem() {
         return recipeItem;
     }
-
+    public void emptyRecipeItem() {
+        for (RecipeItem item : recipeItem) {
+            item.setWeek(null);
+        }
+        recipeItem.clear();
+    }
     public void addRecipeSearch(Recipe recipe, long servings, int index) {
         RecipeItem newRecipe = new RecipeItem(servings, recipe, this);
         recipeItem.add(index, newRecipe);
