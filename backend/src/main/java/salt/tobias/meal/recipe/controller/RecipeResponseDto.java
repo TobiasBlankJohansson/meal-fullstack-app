@@ -9,7 +9,7 @@ import java.util.List;
 public record RecipeResponseDto(List<RecipeDto> recipe) {
     public static RecipeResponseDto weekToRecipeResponseDto(Week week){
         List<RecipeDto> list = new ArrayList<>();
-        week.getRecipeItem().stream().forEach(recipeItem -> {
+        week.getRecipeItem().stream().sorted((a,b) -> Math.toIntExact(a.getId() - b.getId())).forEach(recipeItem -> {
             RecipeDto recipe = new RecipeDto(recipeItem.getServings(),recipeItem.getRecipe());
             list.add(recipe);
         });
