@@ -72,6 +72,7 @@ export function MealWeek() {
           const save = async () => {
             try {
               await postMeals({ servings, recipes: meal });
+              toast.dismiss();
               toast.success("Saved!");
               setChange(() => false);
             } catch (error) {}

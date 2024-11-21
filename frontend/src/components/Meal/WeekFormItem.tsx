@@ -23,7 +23,7 @@ export function WeekFormItem({
       <div className="tooltip" data-tip="Enter how many portions">
         <input
           type="number"
-          placeholder={0 ? (servings + "") : "Portions"}
+          placeholder={servings ? servings + "" : "Portions"}
           className="input w-full max-w-xs border-neutral focus:ring-primary focus:border-primary"
           min={0}
           onChange={(input) =>
@@ -38,7 +38,7 @@ export function WeekFormItem({
         <button
           className={`btn w-full ${
             meal.title == "empty" ? "" : "btn-primary text-white"
-          }  hover:bg-secondary text-md`}
+          }  hover:bg-secondary text-md p-0`}
           onClick={(e) => {
             e.preventDefault();
             setMealSelect(() => count);
