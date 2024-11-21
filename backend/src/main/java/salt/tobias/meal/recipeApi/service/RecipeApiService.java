@@ -19,8 +19,8 @@ public class RecipeApiService {
     public RecipeApiService(RecipeRepository recipeRepo, SearchRepository searchRepo) {
         this.recipeRepo = recipeRepo;
         this.searchRepo = searchRepo;
-        if(!recipeRepo.existsByTitleAndServings("select","0")){
-            recipeRepo.save(new Recipe("select", "", "", "0"));
+        if(!recipeRepo.existsByTitleAndServings("empty","0")){
+            recipeRepo.save(new Recipe("empty", "", "", "0"));
         }
     }
     public List<Recipe> getRecipe(String searchWord, int page) {
