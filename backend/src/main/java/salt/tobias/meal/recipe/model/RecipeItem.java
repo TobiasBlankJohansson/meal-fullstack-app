@@ -27,4 +27,20 @@ public class RecipeItem {
         this.recipe = recipe;
         this.week = week;
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public long getServings() {
+        return servings;
+    }
+
+    public Recipe getRecipe() {
+        return recipe;
+    }
+
+    public Week getWeek() {
+        return week;
+    }
 }

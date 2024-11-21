@@ -15,16 +15,6 @@ public class RecipeService {
     private final WeekRepository weekRepo;
     private final RecipeRepository recipeRepo;
 
-    private List<MealServings> recipes = new ArrayList<>(Arrays.asList(
-            new MealServings(0, new RecipeItem("select", "", "", "0")),
-            new MealServings(0, new RecipeItem("select", "", "", "0")),
-            new MealServings(0, new RecipeItem("select", "", "", "0")),
-            new MealServings(0, new RecipeItem("select", "", "", "0")),
-            new MealServings(0, new RecipeItem("select", "", "", "0")),
-            new MealServings(0, new RecipeItem("select", "", "", "0")),
-            new MealServings(0, new RecipeItem("select", "", "", "0"))
-    ));
-
     public RecipeService(WeekRepository weekRepo, RecipeRepository recipeRepo) {
         this.weekRepo = weekRepo;
         this.recipeRepo = recipeRepo;

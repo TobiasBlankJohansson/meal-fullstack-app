@@ -3,6 +3,7 @@ package salt.tobias.meal.recipe.controller;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import salt.tobias.meal.recipe.model.Week;
 import salt.tobias.meal.recipe.service.MealServings;
 import salt.tobias.meal.recipe.service.RecipeService;
 
@@ -20,8 +21,9 @@ public class RecipeController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<List<MealServings>> getRecipes(@PathVariable long id){
-        return ResponseEntity.ok(recipeService.getRecipes(id));
+    public ResponseEntity<List<RecipeResponseDto>> getRecipes(@PathVariable long id){
+        Week week = recipeService.getWeek(id);
+        return ResponseEntity.ok();
     }
 
     @PostMapping("{id}")
