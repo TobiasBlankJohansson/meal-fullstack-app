@@ -37,7 +37,7 @@ export function WeekFormItem({
       <div className="tooltip" data-tip="Select dinner">
         <button
           className={`btn w-full ${
-            meal.title == "select" ? "btn-primary" : "btn-accent"
+            meal.title == "empty" ? "btn-primary" : "btn-accent"
           } btn-primary hover:bg-secondary text-md`}
           onClick={(e) => {
             e.preventDefault();

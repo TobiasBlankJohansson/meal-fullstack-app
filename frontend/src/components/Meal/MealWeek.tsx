@@ -17,7 +17,7 @@ const week: string[] = [
 const count: number[] = [0, 1, 2, 3, 4, 5, 6];
 
 const emptyMeal: mealItem = {
-  title: "select",
+  title: "empty",
   ingredients: "",
   instructions: "",
   servings: "0",
@@ -54,7 +54,7 @@ export function MealWeek() {
   return (
     <section>
       <header className="flex flex-col items-center">
-        <h2 className="mb-2 text-4xl text-primary font-bold ">Weeks</h2>
+        <h2 className="mb-2 text-4xl text-primary font-bold ">Dinner planner</h2>
         <hr className="w-2/4 border-t-2 border-primary"></hr>
       </header>
       <form
