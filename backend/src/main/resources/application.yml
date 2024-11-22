@@ -1,6 +1,6 @@
 api:
   ninja:
-    X-Api-Key: s
+    key: ${NINJA_KEY}
 
 debug: true
 server:
