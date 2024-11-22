@@ -80,7 +80,7 @@ export function MealRecipe({ setMeal, mealSelect }: mealRecipeProp) {
             {recipeCount != 0 && (
               <button
                 className="btn btn-ghost text-2xl font-bold"
-                onClick={() => SetRecipeCount((prev) => prev - 1)}
+                onClick={() => {SetRecipeCount((prev) => prev - 1)}}
               >
                 {"<"}
               </button>

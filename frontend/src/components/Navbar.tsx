@@ -12,7 +12,7 @@ export function Navbar() {
 
   return (
     <>
-      <nav className="navbar bg-primary text-primary-content px-20 border-b-2 border-gray-500">
+      <nav className="navbar bg-primary text-primary-content px-20 border-b-2 border-gray-500 z-10">
         <header className="flex-1">
           <Link
             to="/"
