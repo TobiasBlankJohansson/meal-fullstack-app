@@ -56,7 +56,7 @@ export function MealWeek() {
   }, []);
 
   return (
-    <section>
+    <section className="pb-20">
       <header className="flex flex-col items-center">
         <h2 className="mb-2 text-4xl text-primary font-bold ">
           Dinner planner

@@ -26,10 +26,10 @@ export function Navbar() {
           <ul className="menu menu-horizontal px-5">
             <li className="px-5">
               <Link
-                to="/"
-                onClick={() => setSelected(() => 0)}
+                to="/meal"
+                onClick={() => setSelected(() => 1)}
                 className={`btn btn-ghost hover:bg-secondary text-lg text-base-100 font-bold ${
-                  selected == 0 && "bg-secondary"
+                  selected == 1 && "bg-secondary"
                 }`}
               >
                 Meal
@@ -38,9 +38,9 @@ export function Navbar() {
             <li className="px-5">
               <Link
                 to="/list"
-                onClick={() => setSelected(() => 1)}
+                onClick={() => setSelected(() => 2)}
                 className={`btn btn-ghost hover:bg-secondary text-lg text-base-100 font-bold ${
-                  selected == 1 && "bg-secondary"
+                  selected == 2 && "bg-secondary"
                 }`}
               >
                 List
