@@ -7,13 +7,13 @@ server:
   port: 3000
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/mealdb
-    username: admin
-    password: admin
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
   jpa:
     defer-datasource-initialization: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
   sql:
     init:
       platform: postgresql
