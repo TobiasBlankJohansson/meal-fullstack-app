@@ -1,8 +1,10 @@
 import { mealItem } from "../../types/meal";
 
-type fetchMeal ={
-  recipe:meal[]
-}
+const PATH = import.meta.env.VITE_BACKEND_PATH;
+
+type fetchMeal = {
+  recipe: meal[];
+};
 
 export type meal = {
   servings: number;
@@ -10,11 +12,11 @@ export type meal = {
 };
 
 export const getMeals = async (): Promise<meal[]> => {
-  const fetchMeal = await fetch("http://localhost:3000/api/recipes/1");
+  const fetchMeal = await fetch(`${PATH}/api/recipes/1`);
   if (!fetchMeal.ok) {
     throw new Error();
   }
-  const recipe:fetchMeal = await fetchMeal.json()
+  const recipe: fetchMeal = await fetchMeal.json();
   return recipe.recipe;
 };
 
@@ -27,7 +29,7 @@ export const postMeals = async ({
   servings,
   recipes,
 }: postMealsProp): Promise<boolean> => {
-  const fetchMeal = await fetch("http://localhost:3000/api/recipes/1", {
+  const fetchMeal = await fetch(`${PATH}/api/recipes/1`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

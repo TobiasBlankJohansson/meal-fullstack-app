@@ -1,5 +1,7 @@
 import { meal } from "../meal/mealFetch";
 
+const PATH = import.meta.env.VITE_BACKEND_PATH;
+
 type GetRecipeProp = {
   recipeCount: number;
   recipeSearch: string;
@@ -13,7 +15,7 @@ export const getRecipe = async ({
     recipeSearch = "random";
   }
   const fetchMeal = await fetch(
-    `http://localhost:3000/api/recipeApi/${recipeSearch}/${recipeCount}`
+    `${PATH}/api/recipeApi/${recipeSearch}/${recipeCount}`
   );
   if (!fetchMeal.ok) {
     throw new Error();
