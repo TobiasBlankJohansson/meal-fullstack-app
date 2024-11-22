@@ -31,13 +31,13 @@ jobs:
         run: gcloud auth configure-docker ${{ vars.GC_REGION }}-docker.pkg.dev
 
       - name: Docker Build
-        run: 
+        run: |
           docker build \
             --no-cache \
-            --build-arg NINJA_KEY=${{ secrets.NINJA_KEY }} \
-            --build-arg DB_USERNAME=${{ secrets.DB_USERNAME }} \
-            --build-arg DB_PASSWORD=${{ secrets.DB_PASSWORD }} \
-            --build-arg DB_URL=${{ secrets.DB_URL }} \
+            --build-arg NINJA_KEY=*** \
+            --build-arg DB_USERNAME=*** \
+            --build-arg DB_PASSWORD=*** \
+            --build-arg DB_URL=*** \
             -t ${{ env.IMAGE_URL }} . -f backend/Dockerfile
 
       - name: Docker Push
